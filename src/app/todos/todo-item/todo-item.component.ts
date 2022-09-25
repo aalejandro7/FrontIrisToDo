@@ -14,23 +14,23 @@ import { deleteTodo, edit, toggle } from '../todo.actions';
 })
 export class TodoItemComponent implements OnInit {
 
-  chkCompleted:FormControl;
-  txtInput:FormControl;
-  isEditing= false;
+  chkCompleted: FormControl;
+  txtInput: FormControl;
+  isEditing = false;
   @ViewChild('inputEdit') txtInputEdit: ElementRef;
-  @Input() todo:Todo;
-  constructor(private cdr:ChangeDetectorRef, private store:Store<AppState>) { }
+  @Input() todo: Todo;
+  constructor(private cdr: ChangeDetectorRef, private store: Store<AppState>) { }
 
 
   ngOnInit(): void {
-    this.chkCompleted= new FormControl(this.todo.completed);
-    this.txtInput= new FormControl(this.todo.text,Validators.required);
-    this.chkCompleted.valueChanges.subscribe(()=>{
-      this.store.dispatch(toggle({id:this.todo.id}));
+    this.chkCompleted = new FormControl(this.todo.completed);
+    this.txtInput = new FormControl(this.todo.text, Validators.required);
+    this.chkCompleted.valueChanges.subscribe(() => {
+      this.store.dispatch(toggle({ id: this.todo.id }));
     })
   }
 
-  edit(){
+  edit() {
 
     this.isEditing = true;
     this.txtInput.setValue(this.todo.text);
@@ -38,17 +38,17 @@ export class TodoItemComponent implements OnInit {
     this.txtInputEdit.nativeElement.select();
   }
 
-  endEdit(){
-    this.isEditing=false;
-    if(this.txtInput.invalid || this.txtInput.value === this.todo.text){
+  endEdit() {
+    this.isEditing = false;
+    if (this.txtInput.invalid || this.txtInput.value === this.todo.text) {
       return;
     }
-    this.store.dispatch(edit({id:this.todo.id,text:this.txtInput.value}))
+    this.store.dispatch(edit({ id: this.todo.id, text: this.txtInput.value }))
 
   }
 
-  delete(){
-    this.store.dispatch(deleteTodo({id:this.todo.id}));
+  delete() {
+    this.store.dispatch(deleteTodo({ id: this.todo.id }));
   }
 
 }

@@ -4,9 +4,9 @@ export class Todo {
   public text: string;
   public completed: boolean;
 
-  constructor( text: string){
+  constructor(text: string) {
     this.id = new Date().getTime();
     this.text = text;
-    this.completed=false;
+    this.completed = false;
   }
 }

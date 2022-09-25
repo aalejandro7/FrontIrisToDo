@@ -11,19 +11,19 @@ import * as actions from '../todo.actions';
 })
 export class TodoAddComponent implements OnInit {
 
-  txtInput:FormControl;
-  constructor(private store:Store<AppState>) {
-    this.txtInput = new FormControl('',Validators.required);
-   }
+  txtInput: FormControl;
+  constructor(private store: Store<AppState>) {
+    this.txtInput = new FormControl('', Validators.required);
+  }
 
   ngOnInit(): void {
   }
 
-  addTodo(){
-    if(this.txtInput.invalid){
+  addTodo() {
+    if (this.txtInput.invalid) {
       return;
     }
-    this.store.dispatch(actions.create({text: this.txtInput.value}));
+    this.store.dispatch(actions.create({ text: this.txtInput.value }));
     this.txtInput.reset();
   }
 }

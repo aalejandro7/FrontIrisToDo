@@ -3,7 +3,8 @@
 // The list of file replacements can be found in `angular.json`.
 
 export const environment = {
-  production: false
+  production: false,
+  API: "http://todoirisapi-env.eba-ab4paumx.us-east-1.elasticbeanstalk.com/v1/api/"
 };
 
 /*

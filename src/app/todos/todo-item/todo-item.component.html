@@ -1,12 +1,5 @@
-<!-- List items should get the class `editing` when editing and `completed` when marked as completed -->
-<li [class.completed]="todo.completed" [class.editing]="isEditing">
-
-  <div class="view">
-    <input class="toggle" [formControl]="chkCompleted" type="checkbox" checked>
-
-    <label (dblclick)="edit()">{{todo.text}}</label>
-
-    <button class="destroy" (click)="delete()"></button>
-  </div>
-  <input class="edit" type="text" [formControl]="txtInput" (keyup.enter)="isEditing=false" (blur)="endEdit()" #inputEdit>
-</li>
+<div class="view">
+  <mat-checkbox [formControl]="chkCompleted" class="example-margin">{{todo.text}}</mat-checkbox>
+  <mat-icon aria-hidden="false" aria-label="Example home icon" fontIcon="home" (click)="delete()" color="warn">close
+  </mat-icon>
+</div>
